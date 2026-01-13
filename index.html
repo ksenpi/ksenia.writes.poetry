@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ksenia Writes Poetry</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="book-container">
+        <div class="book" id="book">
+            <!-- Cover Page -->
+            <div class="page cover-page" data-spread="0">
+                <div class="page-content">
+                    <h1 class="book-title">Ksenia Writes Poetry</h1>
+                    <!-- <p class="book-author">told by Ksenia</p> -->
+                    <div class="cover-trees">
+                        <div class="cover-decoration cover-tree-small">
+                            <div class="cover-tree-layer cover-tree-layer-1"></div>
+                            <div class="cover-tree-layer cover-tree-layer-2"></div>
+                            <div class="cover-tree-layer cover-tree-layer-3"></div>
+                        </div>
+                        <div class="cover-decoration cover-tree-medium">
+                            <div class="cover-tree-layer cover-tree-layer-1"></div>
+                            <div class="cover-tree-layer cover-tree-layer-2"></div>
+                            <div class="cover-tree-layer cover-tree-layer-3"></div>
+                        </div>
+                        <div class="cover-decoration cover-tree-large">
+                            <div class="cover-tree-layer cover-tree-layer-1"></div>
+                            <div class="cover-tree-layer cover-tree-layer-2"></div>
+                            <div class="cover-tree-layer cover-tree-layer-3"></div>
+                        </div>
+                        <div class="cover-decoration cover-tree-small">
+                            <div class="cover-tree-layer cover-tree-layer-1"></div>
+                            <div class="cover-tree-layer cover-tree-layer-2"></div>
+                            <div class="cover-tree-layer cover-tree-layer-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pages will be dynamically inserted here -->
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="controls">
+            <button class="btn prev-btn" id="prevBtn" disabled>
+                <span>←</span> Previous
+            </button>
+            <span class="page-indicator" id="pageIndicator">1 / 1</span>
+            <button class="btn next-btn" id="nextBtn">
+                Next <span>→</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
