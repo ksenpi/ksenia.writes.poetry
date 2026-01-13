@@ -40,6 +40,14 @@ A beautiful, book-like poetry website where visitors can flip through pages of p
 
 The poems will be automatically loaded from the `poems/` directory.
 
+### Mobile Version
+
+The website includes a separate mobile app optimized for mobile devices:
+- **Desktop**: `index.html` - Shows two-page spreads (book-like view)
+- **Mobile**: `index-mobile.html` - Shows one page at a time with slide transitions
+
+Mobile devices are automatically redirected to the mobile version. You can also access it directly at `index-mobile.html`.
+
 ### Navigation
 
 - **Next Page**: Click the "Next" button, press the right arrow key, or swipe left on mobile
@@ -79,15 +87,16 @@ The poem title will be automatically generated from the filename.
 
 ```
 .
-├── index.html          # Main HTML file
-├── styles.css          # Styling for the book interface
-├── script.js           # JavaScript for page flipping and navigation
+├── index.html          # Desktop HTML file (two-page spreads)
+├── index-mobile.html   # Mobile HTML file (one page at a time)
+├── styles.css          # Desktop styling for the book interface
+├── styles-mobile.css   # Mobile styling
+├── script.js           # Desktop JavaScript for page flipping
+├── script-mobile.js    # Mobile JavaScript for page navigation
 ├── poems/              # Directory containing poem text files
-│   ├── whispers-of-dawn.txt
-│   ├── oceans-embrace.txt
-│   ├── autumns-dance.txt
-│   ├── starlight-dreams.txt
-│   └── garden-of-thoughts.txt
+│   ├── In His Hands.txt
+│   ├── First Day of Spring.txt
+│   └── ... (other poem files)
 └── README.md          # This file
 ```
 
