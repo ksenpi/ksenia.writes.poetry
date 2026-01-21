@@ -48,11 +48,10 @@ body {
 
 .page.flipped {
     transform: rotateY(-180deg);
-    z-index: 0;
 }
 
 .page:not(.flipped) {
-    z-index: 10;
+    z-index: 1;
 }
 
 .page-content {

@@ -161,16 +161,10 @@ class MobileBook {
                 pages.push(page);
             });
         } else {
-            // Automatic splitting - estimate lines per page
-            const linesPerPage = 20; // More lines per page on mobile since it's full width
+            // No page breaks - create single page with entire poem
             const lines = poem.content.split('\n');
-            
-            for (let i = 0; i < lines.length; i += linesPerPage) {
-                const pageLines = lines.slice(i, i + linesPerPage);
-                const isFirst = i === 0;
-                const page = this.createPoemPage(poem, pageLines, isFirst);
-                pages.push(page);
-            }
+            const page = this.createPoemPage(poem, lines, true);
+            pages.push(page);
         }
         
         return pages;
@@ -272,12 +266,20 @@ class MobileBook {
         // Update page indicator
         this.pageIndicator.textContent = `${this.currentPage + 1} / ${this.totalPages}`;
 
-        // Update page visibility based on current page
+        // Update page visibility and z-index based on current page
         this.pages.forEach((page, index) => {
             if (index < this.currentPage) {
+                // Pages before current are flipped (behind)
                 page.classList.add('flipped');
-            } else {
+                page.style.zIndex = this.totalPages - index;
+            } else if (index === this.currentPage) {
+                // Current page is visible (on top)
                 page.classList.remove('flipped');
+                page.style.zIndex = this.totalPages + 10;
+            } else {
+                // Pages after current are not flipped but behind current
+                page.classList.remove('flipped');
+                page.style.zIndex = this.totalPages - index;
             }
         });
     }

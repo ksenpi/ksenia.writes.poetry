@@ -210,33 +210,12 @@ class Book {
             
             return spreads;
         } else {
-            // Use automatic splitting based on line count
+            // No page breaks - create single spread with entire poem
             const lines = poem.content.split('\n');
-            const spreads = [];
-            let lineIndex = 0;
-            let spreadNum = 0;
+            const leftPage = this.createPoemPage(poem, 'left', startSpreadIndex, lines, true);
+            const rightPage = this.createPoemPage(poem, 'right', startSpreadIndex, [], false);
             
-            while (lineIndex < lines.length) {
-                const isFirstSpread = spreadNum === 0;
-                const linesPerLeftPage = this.getLinesPerPage(isFirstSpread);
-                const linesPerRightPage = this.getLinesPerPage(false);
-                
-                // Get lines for left page
-                const leftLines = lines.slice(lineIndex, lineIndex + linesPerLeftPage);
-                lineIndex += linesPerLeftPage;
-                
-                // Get lines for right page
-                const rightLines = lines.slice(lineIndex, lineIndex + linesPerRightPage);
-                lineIndex += linesPerRightPage;
-                
-                const leftPage = this.createPoemPage(poem, 'left', startSpreadIndex + spreadNum, leftLines, isFirstSpread);
-                const rightPage = this.createPoemPage(poem, 'right', startSpreadIndex + spreadNum, rightLines, false);
-                
-                spreads.push([leftPage, rightPage]);
-                spreadNum++;
-            }
-            
-            return spreads;
+            return [[leftPage, rightPage]];
         }
     }
 
