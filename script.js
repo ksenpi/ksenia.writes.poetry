@@ -1,8 +1,8 @@
 // List of poem files to load
 const poemFiles = [
     'In His Hands.txt',
-    'Sooner or Later.txt',
-    'The Week I Fell In Love.txt',
+    // 'Sooner or Later.txt',
+    // 'The Week I Fell In Love.txt',
     'First Day of Spring.txt',
     'Beatty Line Haibun.txt',
     'Summertime in the Temperate Rainforest.txt',
@@ -10,7 +10,7 @@ const poemFiles = [
     'Baby.txt',
     'Sanctuary.txt',
     // 'Passing.txt',
-    //'True Love.txt',
+    // 'True Love.txt',
 ];
 
 // Function to convert filename to title

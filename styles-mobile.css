@@ -16,6 +16,7 @@ body {
 }
 
 .book-container {
+    perspective: 2000px;
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
@@ -27,6 +28,7 @@ body {
     height: 70vh;
     min-height: 500px;
     max-height: 800px;
+    transform-style: preserve-3d;
 }
 
 .page {
@@ -37,26 +39,20 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     overflow: hidden;
-    opacity: 0;
-    transform: translateX(100%);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-style: preserve-3d;
+    transform-origin: right center;
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    backface-visibility: hidden;
     z-index: 1;
 }
 
-.page.active {
-    opacity: 1;
-    transform: translateX(0);
+.page.flipped {
+    transform: rotateY(-180deg);
+    z-index: 0;
+}
+
+.page:not(.flipped) {
     z-index: 10;
-}
-
-.page.prev {
-    transform: translateX(-100%);
-    opacity: 0;
-}
-
-.page.next {
-    transform: translateX(100%);
-    opacity: 0;
 }
 
 .page-content {

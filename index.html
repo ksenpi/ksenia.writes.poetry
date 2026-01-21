@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="styles.css">
     <script>
         // Redirect to mobile version on mobile devices
-        if (window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
-                window.location.href = 'index-mobile.html';
+        (function() {
+            const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const pathname = window.location.pathname;
+            const isIndexPage = pathname === '/' || pathname.endsWith('index.html') || pathname.endsWith('/');
+
+            if (isMobile && isIndexPage && !pathname.includes('index-mobile')) {
+                const basePath = pathname.substring(0, pathname.lastIndexOf('/') + 1);
+                window.location.href = basePath + 'index-mobile.html';
             }
-        }
+        })();
     </script>
 </head>
 <body>

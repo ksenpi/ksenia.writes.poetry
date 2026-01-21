@@ -1,14 +1,16 @@
 // List of poem files to load (same as desktop)
 const poemFiles = [
     'In His Hands.txt',
-    'Sooner or Later.txt',
-    'The Week I Fell In Love.txt',
+    // 'Sooner or Later.txt',
+    // 'The Week I Fell In Love.txt',
     'First Day of Spring.txt',
     'Beatty Line Haibun.txt',
     'Summertime in the Temperate Rainforest.txt',
     'Oncoming Lights.txt',
     'Baby.txt',
     'Sanctuary.txt',
+    // 'Passing.txt',
+    // 'True Love.txt',
 ];
 
 // Function to convert filename to title
@@ -100,10 +102,14 @@ class MobileBook {
         
         this.totalPages = this.pages.length;
         
-        // Set first page as active
-        if (this.pages.length > 0) {
-            this.pages[0].classList.add('active');
-        }
+        // Initialize all pages - first page visible, others flipped
+        this.pages.forEach((page, index) => {
+            if (index === 0) {
+                page.classList.remove('flipped');
+            } else {
+                page.classList.add('flipped');
+            }
+        });
     }
 
     createCoverPage() {
@@ -242,24 +248,17 @@ class MobileBook {
             return;
         }
 
-        // Update page classes
+        // Update page classes for page flip animation
         const currentPageEl = this.pages[this.currentPage];
         const newPageEl = this.pages[newPage];
         
-        // Remove active class from current page
-        currentPageEl.classList.remove('active');
-        
-        // Add appropriate transition class
         if (direction > 0) {
-            currentPageEl.classList.add('prev');
-            newPageEl.classList.remove('next', 'prev');
+            // Going forward - flip current page
+            currentPageEl.classList.add('flipped');
         } else {
-            currentPageEl.classList.add('next');
-            newPageEl.classList.remove('next', 'prev');
+            // Going backward - unflip previous page
+            newPageEl.classList.remove('flipped');
         }
-        
-        // Add active class to new page
-        newPageEl.classList.add('active');
         
         this.currentPage = newPage;
         this.updateUI();
@@ -272,6 +271,15 @@ class MobileBook {
         
         // Update page indicator
         this.pageIndicator.textContent = `${this.currentPage + 1} / ${this.totalPages}`;
+
+        // Update page visibility based on current page
+        this.pages.forEach((page, index) => {
+            if (index < this.currentPage) {
+                page.classList.add('flipped');
+            } else {
+                page.classList.remove('flipped');
+            }
+        });
     }
 }
 
